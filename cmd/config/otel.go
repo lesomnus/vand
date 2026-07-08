@@ -5,10 +5,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/lesomnus/vend/cmd/version"
 	"github.com/lesomnus/mkot"
 	"github.com/lesomnus/mkot/pretty"
 	"github.com/lesomnus/otx"
+	"github.com/lesomnus/vand/cmd/version"
 	"go.opentelemetry.io/otel/attribute"
 )
 
@@ -32,11 +32,11 @@ func (c *OtelConfig) Build(ctx context.Context) (context.Context, *otx.Otx, erro
 		otc.Providers = map[mkot.Id]*mkot.ProviderConfig{}
 	}
 
-	const ServiceResourceId mkot.Id = "resource/vend"
+	const ServiceResourceId mkot.Id = "resource/vand"
 	if _, ok := otc.Processors[ServiceResourceId]; !ok {
 		otc.Processors[ServiceResourceId] = &mkot.Resource{
 			Attributes: []mkot.Attr{
-				{Key: "service.name", Value: attribute.StringValue("vend")},
+				{Key: "service.name", Value: attribute.StringValue("vand")},
 				{Key: "service.version", Value: attribute.StringValue(version.Get().Version)},
 			},
 		}

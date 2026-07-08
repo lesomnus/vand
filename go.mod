@@ -1,4 +1,4 @@
-module github.com/lesomnus/vend
+module github.com/lesomnus/vand
 
 go 1.26.2
 

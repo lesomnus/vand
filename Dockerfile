@@ -46,8 +46,8 @@ COPY --from=builder /dist/ /
 FROM scratch AS app
 
 ARG TARGETARCH
-COPY "${TARGETARCH}" /vend
+COPY "${TARGETARCH}" /vand
 
 USER 65532:65532
-ENTRYPOINT ["/vend"]
+ENTRYPOINT ["/vand"]
 CMD ["--help"]

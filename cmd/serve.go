@@ -6,7 +6,7 @@ import (
 
 	"github.com/lesomnus/otx"
 	"github.com/lesomnus/otx/otxhttp"
-	"github.com/lesomnus/vend/internal/vend"
+	"github.com/lesomnus/vand/internal/vand"
 	"github.com/lesomnus/xli"
 )
 
@@ -17,18 +17,29 @@ func NewCmdServe() *xli.Command {
 
 		Handler: xli.OnRun(func(ctx context.Context, cmd *xli.Command, next xli.Next) error {
 			c := use_config.Must(ctx)
-			s := vend.NewServer(c.Packages)
+			s := vand.NewServer(c.Packages)
 
 			x := otx.From(ctx)
-			h := otxhttp.NewHandler(x, otxhttp.BoundaryLogger()(s), "vend")
+			h := otxhttp.NewHandler(x, otxhttp.BoundaryLogger()(s), "vand")
 
-			mux := http.NewServeMux()
-			mux.HandleFunc("GET /{$}", func(w http.ResponseWriter, r *http.Request) {
-				w.WriteHeader(http.StatusOK)
-			})
-			mux.Handle("/", h)
-
-			return http.ListenAndServe(c.Server.Addr, mux)
+			return http.ListenAndServe(c.Server.Addr, newServeMux(h))
 		}),
 	}
+}
+
+// newServeMux wires the health check and the vanity handler. The root path is
+// both the health check and the vanity endpoint for the root package, so it is
+// delegated to the vanity handler only when it is a go-get request; a plain
+// GET / stays a lightweight, unlogged 200.
+func newServeMux(vanity http.Handler) *http.ServeMux {
+	mux := http.NewServeMux()
+	mux.HandleFunc("GET /{$}", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Query().Get("go-get") == "1" {
+			vanity.ServeHTTP(w, r)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+	})
+	mux.Handle("/", vanity)
+	return mux
 }

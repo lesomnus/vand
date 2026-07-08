@@ -2,7 +2,7 @@ variable "TAG" {
   default = "local"
 }
 variable "REPO" {
-  default = "ghcr.io/lesomnus/vend"
+  default = "ghcr.io/lesomnus/vand"
 }
 variable "BUILD_HASH" {
   default = "0000000000000000000000000000000000000000"
@@ -40,10 +40,10 @@ target "app" {
   context = "./dist"
   dockerfile = "../Dockerfile"
   labels = {
-    "org.opencontainers.image.title"         = "vend",
+    "org.opencontainers.image.title"         = "vand",
     # "org.opencontainers.image.description"   = "",
     # "org.opencontainers.image.documentation" = "",
-    "org.opencontainers.image.url"           = "https://github.com/lesomnus/vend",
+    "org.opencontainers.image.url"           = "https://github.com/lesomnus/vand",
     # "org.opencontainers.image.vendor"        = "",
     "org.opencontainers.image.revision"      = "${BUILD_HASH}",
     "org.opencontainers.image.version"       = "${APP_VERSION}",

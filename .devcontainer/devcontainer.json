@@ -1,5 +1,5 @@
 {
-	"name": "lesomnus/vend",
+	"name": "lesomnus/vand",
 	"dockerComposeFile": "docker-compose.yaml",
 	"service": "dev",
 	"workspaceFolder": "/workspace",

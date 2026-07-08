@@ -1,13 +1,13 @@
 services:
   app:
-    image: ghcr.io/lesomnus/vend:${REVISION:-local}
+    image: ghcr.io/lesomnus/vand:${REVISION:-local}
     command: [serve]
 
     network_mode: host
     privileged: true
 
     volumes:
-      - ./vend.yaml:/vend.yaml:ro
+      - ./vand.yaml:/vand.yaml:ro
 
     deploy:
       resources:

@@ -3,14 +3,14 @@ package cmd
 import (
 	"context"
 
-	"github.com/lesomnus/vend/cmd/version"
+	"github.com/lesomnus/vand/cmd/version"
 	"github.com/lesomnus/xli"
 )
 
 func NewCmdVersion() *xli.Command {
-	const Template = `VEND_VERSION=%s
-VEND_GIT_REV=%s
-VEND_GIT_DIRTY=%v
+	const Template = `VAND_VERSION=%s
+VAND_GIT_REV=%s
+VAND_GIT_DIRTY=%v
 `
 	return &xli.Command{
 		Name:  "version",

@@ -1,15 +1,17 @@
 package config
 
 import (
+	"fmt"
 	"os"
+	"strings"
 
 	"github.com/goccy/go-yaml"
 	"github.com/lesomnus/z"
 )
 
 var DefaultConfigPaths = []string{
-	"vend.yaml",
-	"vend.yml",
+	"vand.yaml",
+	"vand.yml",
 }
 
 type Config struct {
@@ -44,6 +46,15 @@ func (c *Config) Evaluate() error {
 	z.FallbackP(&c.Server.Addr, ":8080")
 	if c.Packages == nil {
 		c.Packages = make(PackageConfig)
+	}
+	for name, pkg := range c.Packages {
+		if pkg.Root == nil {
+			continue
+		}
+		root := *pkg.Root
+		if root != "" && root != name && !strings.HasPrefix(name, root+"/") {
+			return fmt.Errorf("package %q: root %q must be a path prefix of the package path", name, root)
+		}
 	}
 	return nil
 }
