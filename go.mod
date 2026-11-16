@@ -4,19 +4,19 @@ go 1.26.2
 
 require (
 	github.com/goccy/go-yaml v1.19.2
-	github.com/lesomnus/mkot v0.0.0-20261109051210-adf1656dc93b
-	github.com/lesomnus/mkot/pretty v0.0.0-20261109051210-adf1656dc93b
-	github.com/lesomnus/otx v0.0.0-20260531101103-be4e3034ac45
-	github.com/lesomnus/otx/otxhttp v0.0.0-20260531101103-be4e3034ac45
-	github.com/lesomnus/xli v0.0.0-20260415201908-e5f4624a24b7
-	github.com/lesomnus/z v0.0.0-20260531102454-3f1853bb4278
+	github.com/lesomnus/mkot v0.0.0-20261116004612-c43b84a5367d
+	github.com/lesomnus/mkot/pretty v0.0.0-20261116004612-c43b84a5367d
+	github.com/lesomnus/otx v0.0.0-20261116004606-bf8c06d82f60
+	github.com/lesomnus/otx/otxhttp v0.0.0-20261116004606-bf8c06d82f60
+	github.com/lesomnus/xli v0.0.0-20261009121920-4ce270c7448c
+	github.com/lesomnus/z v0.0.0-20260907061127-c3858eb05878
 	go.opentelemetry.io/otel v1.47.0
 )
 
 require (
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/fatih/color v1.19.0 // indirect
-	github.com/felixge/httpsnoop v1.0.4 // indirect
+	github.com/felixge/httpsnoop v1.1.0 // indirect
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/google/uuid v1.6.0 // indirect
@@ -24,7 +24,7 @@ require (
 	github.com/mattn/go-isatty v0.0.23 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/bridges/otelslog v0.21.0 // indirect
-	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.64.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.72.0 // indirect
 	go.opentelemetry.io/otel/log v1.47.0 // indirect
 	go.opentelemetry.io/otel/metric v1.47.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.47.0 // indirect
